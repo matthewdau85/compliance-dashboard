@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ heading }}</h1>
+    <h1>{{ heading }}</h1>
+    {% if user %}
+        <p>Settings for {{ user.name }}:</p>
+        <form action="{{ url_for('settings') }}" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            </div>
+            <button type="submit" class="btn-primary">Save Changes</button>
+        </form>
+    {% else %}
+        <p>You must be logged in to update settings. <a href="{{ url_for('login') }}">Login</a></p>
+    {% endif %}
 {% endblock %}

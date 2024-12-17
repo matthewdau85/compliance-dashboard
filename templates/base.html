@@ -3,33 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}APGMS{% endblock %}</title>
+    <title>{{ heading }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+
+    <!-- Header with logo and welcome message -->
     <header>
-        <img src="{{ url_for('static', filename='images/ato_logo_white.svg') }}" alt="ATO Logo" class="logo">
+        <div class="logo-container">
+            <img src="/static/images/ato_logo_white.svg" alt="ATO Logo" class="logo">
+        </div>
+        <div class="header-right">
+            {% if 'user' in session %}
+                <div class="welcome-message">
+                    Welcome, {{ dummy_users[session['user']].name }}!
+                </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+            {% endif %}
+        </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-                <li><a href="{{ url_for('documents') }}">Documents</a></li>
-                <li><a href="{{ url_for('my_returns') }}">My Returns</a></li>
-                <li><a href="{{ url_for('notifications') }}">Notifications</a></li>
-                <li><a href="{{ url_for('payment_history') }}">Payment History</a></li>
-                <li><a href="{{ url_for('reports') }}">Reports</a></li>
-                <li><a href="{{ url_for('settings') }}">Settings</a></li>
+                <li><a href="/">Home</a></li>
+                {% if 'user' not in session %}
+                    <li><a href="/login">Login</a></li>
+                {% else %}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/logout" class="logout">Logout</a></li>
+                {% endif %}
+                <li><a href="/register">Register</a></li>
+                <li><a href="/documents">Documents</a></li>
+                <li><a href="/my_returns">My Returns</a></li>
+                <li><a href="/notifications">Notifications</a></li>
+                <li><a href="/payment_history">Payment History</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/settings">Settings</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Main content area -->
     <main>
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Australian Taxation Office. All rights reserved.</p>
     </footer>
+
 </body>
 </html>

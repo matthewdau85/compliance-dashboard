@@ -5,42 +5,62 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
+html, body {
+    height: 100%; /* Ensure full height */
+    background-color: #ffffff; /* White background */
     color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
-/* Header */
+/* Body Styling */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styling */
 header {
     background-color: #003366; /* ATO dark blue */
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 50px; /* Wider header with more padding on the sides */
     display: flex;
+    justify-content: space-between; /* Ensure space between the logo and welcome message */
     align-items: center;
-    justify-content: space-between;
+    position: relative;
 }
 
-.logo {
-    height: 50px;
+/* ATO Logo Styling */
+header .logo {
+    height: 60px; /* Increased size of the logo */
+    width: auto; /* Maintain aspect ratio */
 }
 
-nav {
-    flex-grow: 1;
-    text-align: right;
+/* Welcome message style in the header - right-aligned, above the menu */
+.welcome-message {
+    position: absolute;
+    top: 0;
+    right: 50px; /* Position it just above the menu */
+    font-size: 1.5em; /* Slightly smaller to fit better */
+    color: #ffffff; /* White color */
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    text-transform: none; /* No uppercase */
 }
 
+/* Navigation Links */
 .nav-links {
     list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Ensure items start from the left */
+    flex-wrap: nowrap; /* Prevent items from wrapping onto new lines */
+    margin-top: 30px; /* Move menu down */
+    overflow-x: auto; /* Allow horizontal scrolling if items overflow */
 }
 
 .nav-links li {
-    display: inline;
-    margin-left: 20px;
+    margin: 0 10px; /* Reduced margin to make more space */
+    text-align: center; /* Ensures multi-line items are centered */
 }
 
 .nav-links a {
@@ -49,47 +69,146 @@ nav {
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 5px;
+    display: block; /* Ensures it takes full width for multi-line */
 }
 
 .nav-links a:hover {
-    background-color: #005bb5; /* Lighter blue for hover effect */
+    background-color: #005bb5;
 }
 
-/* Main Content */
+/* Ensure all menu items fit in one line */
+.nav-links li {
+    white-space: nowrap; /* Prevents wrapping of text in menu items */
+}
+
+/* Main Content Styling */
 main {
-    flex-grow: 1;
+    flex: 1; /* Takes up all available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* White background */
     padding: 20px;
-    background-color: #fff;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 1200px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
 }
 
-/* Footer */
+/* Login Page Specific Styles */
+.login-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #f4f8fb; /* Slightly off-white for contrast */
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+    text-align: center;
+    color: #003366; /* ATO dark blue */
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-group input:focus {
+    border-color: #005bb5;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 91, 181, 0.5);
+}
+
+/* Password Group */
+.password-group {
+    position: relative;
+}
+
+.password-group input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 1.2em;
+}
+
+.toggle-password:hover {
+    color: #003366;
+}
+
+/* Button Styling */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #005bb5;
+}
+
+/* Footer Styling */
 footer {
     background-color: #003366; /* ATO dark blue */
-    color: #fff;
-    text-align: center;
+    color: white;
     padding: 10px 0;
-    margin-top: auto;
+    text-align: center;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+footer p {
+    font-size: 0.9em;
+}
 
-    .nav-links {
-        text-align: center;
-        margin-top: 10px;
-    }
+/* Logout button centered at the bottom of the page */
+.logout-bottom {
+    position: fixed;
+    bottom: 20px; /* 20px from the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the button horizontally */
+    padding: 10px;
+    text-align: center;
+}
 
-    .nav-links li {
-        display: block;
-        margin: 5px 0;
-    }
+.logout-bottom .btn-primary {
+    padding: 12px 20px;
+    background-color: #003366; /* ATO dark blue color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.logout-bottom .btn-primary:hover {
+    background-color: #005bb5; /* Lighter blue on hover */
 }

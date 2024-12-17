@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ heading }}</h1>
+    <h1>{{ heading }}</h1>
+    {% if user %}
+        <p>Your notifications, {{ user.name }}:</p>
+        <!-- Add notifications here -->
+    {% else %}
+        <p>Please log in to view your notifications. <a href="{{ url_for('login') }}">Login</a></p>
+    {% endif %}
 {% endblock %}
