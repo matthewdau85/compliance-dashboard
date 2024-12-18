@@ -6,16 +6,16 @@
 }
 
 html, body {
-    height: 100%; /* Ensure full height */
+    height: 100%; /* Ensure full height of the page */
     background-color: #ffffff; /* White background */
     color: #333;
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Font adjustment for ATO theme */
+    display: flex;
+    flex-direction: column; /* Flex container to make the body fill the height */
 }
 
-/* Body Styling */
 body {
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh; /* Ensure body fills at least one screen */
 }
 
 /* Header Styling */
@@ -26,69 +26,72 @@ header {
     display: flex;
     justify-content: space-between; /* Ensure space between the logo and welcome message */
     align-items: center;
-    position: relative;
 }
 
-/* ATO Logo Styling */
 header .logo {
     height: 60px; /* Increased size of the logo */
     width: auto; /* Maintain aspect ratio */
 }
 
-/* Welcome message style in the header - right-aligned, above the menu */
 .welcome-message {
-    position: absolute;
-    top: 0;
-    right: 50px; /* Position it just above the menu */
-    font-size: 1.5em; /* Slightly smaller to fit better */
-    color: #ffffff; /* White color */
+    font-size: 1.5em;
+    color: #ffffff;
     font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    text-transform: none; /* No uppercase */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Adjusted for ATO theme */
+    text-transform: none;
+    position: absolute;
+    top: 20px;
+    right: 50px; /* Move to the far right */
 }
 
-/* Navigation Links */
+/* Navigation Menu Styling */
+nav {
+    background-color: #003366; /* Background color of the menu */
+    padding: 10px 50px; /* Adjusted padding for spacing */
+}
+
 .nav-links {
     list-style: none;
-    padding: 0;
     display: flex;
-    justify-content: flex-start; /* Ensure items start from the left */
-    flex-wrap: nowrap; /* Prevent items from wrapping onto new lines */
-    margin-top: 30px; /* Move menu down */
-    overflow-x: auto; /* Allow horizontal scrolling if items overflow */
+    justify-content: space-between; /* Spread out menu items evenly */
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links li {
-    margin: 0 10px; /* Reduced margin to make more space */
-    text-align: center; /* Ensures multi-line items are centered */
+    margin: 0 15px;
 }
 
 .nav-links a {
-    color: #fff;
+    color: #ffffff; /* White text for menu items */
     text-decoration: none;
     font-weight: bold;
-    padding: 5px 10px;
+    font-size: 1em;
+    padding: 10px;
     border-radius: 5px;
-    display: block; /* Ensures it takes full width for multi-line */
 }
 
 .nav-links a:hover {
     background-color: #005bb5;
 }
 
-/* Ensure all menu items fit in one line */
-.nav-links li {
-    white-space: nowrap; /* Prevents wrapping of text in menu items */
-}
-
 /* Main Content Styling */
 main {
-    flex: 1; /* Takes up all available space */
+    flex: 1; /* Allow it to take up remaining space */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff; /* White background */
-    padding: 20px;
+    flex-direction: column; /* Stack sections vertically */
+    justify-content: flex-start; /* Align content to the top */
+    padding: 40px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Push the footer to the bottom if content is short */
 }
 
 /* Login Page Specific Styles */
@@ -100,6 +103,11 @@ main {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the form */
+    align-items: center; /* Horizontally center the form */
+    margin: 0 auto; /* Center the form within its container */
 }
 
 .login-container h1 {
@@ -178,37 +186,71 @@ main {
     background-color: #005bb5;
 }
 
-/* Footer Styling */
-footer {
-    background-color: #003366; /* ATO dark blue */
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+/* Compliance Score Section - Top Right */
+.compliance-score {
+    position: absolute;
+    top: 160px; /* Nudge the compliance score box further up */
+    right: 25px; /* Adjust it further left */
+    width: 30%; /* Increase width of the compliance box */
+    background-color: #f4f8fb;
+    border: 1px solid #ccc;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-footer p {
-    font-size: 0.9em;
+.compliance-status {
+    margin-bottom: 15px;
 }
 
-/* Logout button centered at the bottom of the page */
-.logout-bottom {
-    position: fixed;
-    bottom: 20px; /* 20px from the bottom */
-    left: 50%;
-    transform: translateX(-50%); /* Centers the button horizontally */
-    padding: 10px;
-    text-align: center;
-}
-
-.logout-bottom .btn-primary {
-    padding: 12px 20px;
-    background-color: #003366; /* ATO dark blue color */
-    color: white;
-    text-decoration: none;
+/* Progress Bar Styling */
+.progress-bar-container {
+    background-color: #e0e0e0;  /* Light grey background */
     border-radius: 5px;
-    font-size: 1.2em;
+    height: 20px;
+    width: 100%;
+    margin-top: 10px;
 }
 
-.logout-bottom .btn-primary:hover {
-    background-color: #005bb5; /* Lighter blue on hover */
+.progress-bar {
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(to right, red, yellow, green); /* Gradient from red to yellow to green */
+    text-align: center;
+    color: white;
+    line-height: 20px; /* Vertically center the text */
 }
+
+/* Optional: Change the color depending on the percentage */
+.progress-bar[data-score="high"] {
+    background-color: #4caf50; /* Green for high compliance */
+}
+
+.progress-bar[data-score="medium"] {
+    background-color: #ff9800; /* Orange for medium compliance */
+}
+
+.progress-bar[data-score="low"] {
+    background-color: #f44336; /* Red for low compliance */
+}
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height, adjust as needed */
+}
+
+/* Log In element */
+.login {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+

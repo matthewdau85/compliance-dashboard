@@ -1,8 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Dashboard</h1>
-    <p>Welcome back, {{ user.name }}!</p>
-    <p>Your age: {{ user.age }}</p>
-    <p>Your email: {{ user.email }}</p>
+    <main>
+        {% if user %}
+            <!-- Compliance Score Section -->
+            <div class="compliance-score">
+                <p><strong>Your current compliance score is:</strong></p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: {{ compliance_score }}%;"></div>
+                </div>
+                <p><strong>{{ compliance_score }}% - Good</strong></p>
+                <p>Compliance Status: Compliant</p>
+                <p>Last audit date: {{ last_audit_date }}</p>
+            </div>
+        {% else %}
+            <p>{{ message }}</p>  <!-- Display the message when the user is not logged in -->
+        {% endif %}
+    </main>
 {% endblock %}
